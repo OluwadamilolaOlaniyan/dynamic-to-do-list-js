@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const addButton = document.getElementById('add-task-btn');
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
@@ -6,17 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let tasks = [];
 
     function createTaskElement(taskText, save = true) {
-        const li = document.createElement('li'); // Created list item
+        const li = document.createElement('li'); // Create list item
         li.textContent = taskText;
 
-        const removeBtn = document.createElement('button'); // Created remove button
+        const removeBtn = document.createElement('button'); // Create remove button
         removeBtn.textContent = "Remove";
-        removeBtn.className = 'remove-btn';
+        removeBtn.classList.add('remove-btn'); // Use classList.add instead of className
 
         removeBtn.onclick = () => {
             taskList.removeChild(li);
-            tasks = tasks.filter(task => task !== taskText); // Removal from array
-            localStorage.setItem('tasks', JSON.stringify(tasks)); // Updated Local Storage
+            tasks = tasks.filter(task => task !== taskText); // Remove from array
+            localStorage.setItem('tasks', JSON.stringify(tasks)); // Update Local Storage
         };
 
         li.appendChild(removeBtn);
